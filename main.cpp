@@ -20,7 +20,7 @@ void GeraGrafo_Q1(int nmrArestas, int nmrVertices)
             {
                 if((aresta[i][0] == aresta[j][0] &&
                         aresta[i][1] == aresta[j][1]) || (aresta[i][0] == aresta[j][1] &&
-                                                      aresta[i][1] == aresta[j][0]))
+                                aresta[i][1] == aresta[j][0]))
                     i--;
             }
         } i
@@ -48,7 +48,8 @@ void GeraGrafo_Q1(int nmrArestas, int nmrVertices)
         cout<<" ]";
     }
 }
-int main()
+
+void Questao1()
 {
     srand((unsigned int)time(NULL));
     int a, v;
@@ -56,4 +57,56 @@ int main()
     //Geração de 100 a 1000 vertices
     a = v + (v * (rand() % 9));
     GeraGrafo_Q1(a, v);
+}
+
+void Questao2() {}
+void Questao3() {}
+void Questao4() {}
+void Questao5() {}
+void Questao6() {}
+void Questao7() {}
+void Questao8() {}
+
+int main()
+{
+    char questao;
+    cout<<"Selecione a questao de 1 a 8: ";
+    cin >> questao;
+
+    switch (questao)
+    {
+    case '1':
+        Questao1();
+        break;
+
+    case '2':
+        Questao2();
+        break;
+
+    case '3':
+        Questao3();
+        break;
+
+    case '4':
+        Questao4();
+        break;
+
+    case '5':
+        Questao5();
+        break;
+
+    case '6':
+        Questao6();
+        break;
+
+    case '7':
+        Questao7();
+        break;
+
+    case '8':
+        Questao8();
+        break;
+    default :
+        cout << "Questao invalida" << endl;
+    }
 }
