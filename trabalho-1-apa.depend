@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1640722102 source:c:\users\pheli\git\estudo\apa\trabalho-1-apa\main.cpp
+	<iostream>
+	<stdlib.h>
+	<ctime>
+
