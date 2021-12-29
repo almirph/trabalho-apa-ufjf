@@ -1,15 +1,14 @@
 #include<iostream>
 #include<stdlib.h>
 #include <ctime>
-#include "Grafo.h"
 #include <vector>
 
 using namespace std;
 
-void GeraGrafo_Q1(int nmrArestas, int nmrVertices)
+vector<vector<int>> GeraGrafo_Q1(int nmrArestas, int nmrVertices)
 {
     int i, j, contador;
-    vector<vector<int>> arestas(nmrArestas, vector<int>(nmrVertices));
+    vector<vector<int>> arestas(nmrArestas, vector<int>(2));
     i = 0;
     while(i < nmrArestas)
     {
@@ -30,6 +29,9 @@ void GeraGrafo_Q1(int nmrArestas, int nmrVertices)
         } i
         ++;
     }
+
+    cout<<"\nGrafo aleatorio: \n";
+
     for(i = 0; i < nmrVertices; i++)
     {
         contador = 0;
@@ -49,21 +51,42 @@ void GeraGrafo_Q1(int nmrArestas, int nmrVertices)
             else if(j== nmrArestas-1 && contador == 0)
                 cout<<"Vertice sem arestas";
         }
-        cout<<" ]";
+        cout<<" ]\n";
     }
+
+    return arestas;
 }
 
-void Questao1()
+vector<vector<int>> Questao1()
 {
     srand((unsigned int)time(NULL));
     int a, v;
     v= 100;
     //Geração de 100 a 1000 vertices
     a = v + (v * (rand() % 9));
-    GeraGrafo_Q1(a, v);
+    return GeraGrafo_Q1(a, v);
 }
 
-void Questao2() {}
+void Questao2(vector<vector<int>> arestas)
+{
+    cout<<"\nMatriz de adjacencias: \n";
+    int i, j, contador;
+    vector<vector<int>> matriz(100, vector<int>(100, 0));
+    for(i = 0; i < arestas.size(); i++)
+    {
+            matriz.at(arestas.at(i).at(0) - 1 ).at(arestas.at(i).at(1) - 1 ) = 1;
+            matriz.at(arestas.at(i).at(1) - 1 ).at(arestas.at(i).at(0) - 1 ) = 1;
+    }
+
+    for(i = 0; i < 100; i++)
+    {
+        cout << " \n";
+        for(j = 0; j < 100; j++)
+        {
+            cout << " " << matriz.at(i).at(j) << " ";
+        }
+    }
+}
 void Questao3() {}
 void Questao4() {}
 void Questao5() {}
@@ -84,7 +107,7 @@ int main()
         break;
 
     case '2':
-        Questao2();
+        Questao2(Questao1());
         break;
 
     case '3':
