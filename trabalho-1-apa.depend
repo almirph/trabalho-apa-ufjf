@@ -4,8 +4,18 @@
 	<stdlib.h>
 	<ctime>
 
-1640723459 source:c:\users\pheli\git\estudo\apa\trabalho-apa-ufjf\main.cpp
+1640786607 source:c:\users\pheli\git\estudo\apa\trabalho-apa-ufjf\main.cpp
 	<iostream>
 	<stdlib.h>
 	<ctime>
+	"Grafo.h"
+	<vector>
+
+1640784495 source:c:\users\pheli\git\estudo\apa\trabalho-apa-ufjf\src\grafo.cpp
+	"Grafo.h"
+
+1640785474 c:\users\pheli\git\estudo\apa\trabalho-apa-ufjf\include\grafo.h
+
+1640784056 c:\users\pheli\git\estudo\apa\trabalho-apa-ufjf\src\grafo.cpp
+	"Grafo.h"
 

@@ -1,26 +1,30 @@
 #include<iostream>
 #include<stdlib.h>
 #include <ctime>
+#include "Grafo.h"
+#include <vector>
 
 using namespace std;
 
 void GeraGrafo_Q1(int nmrArestas, int nmrVertices)
 {
-    int i, j, aresta[nmrArestas][2], contador;
+    int i, j, contador;
+    vector<vector<int>> arestas(nmrArestas, vector<int>(nmrVertices));
     i = 0;
     while(i < nmrArestas)
     {
-        aresta[i][0] = rand()%nmrVertices+1;
-        aresta[i][1] = rand()%nmrVertices+1;
-        if(aresta[i][0] == aresta[i][1])
+        arestas.at(i).at(0) = rand()%nmrVertices+1;
+        arestas.at(i).at(1) = rand()%nmrVertices+1;
+
+        if(arestas.at(i).at(0) == arestas.at(i).at(1))
             continue;
         else
         {
             for(j = 0; j < i; j++)
             {
-                if((aresta[i][0] == aresta[j][0] &&
-                        aresta[i][1] == aresta[j][1]) || (aresta[i][0] == aresta[j][1] &&
-                                aresta[i][1] == aresta[j][0]))
+                if((arestas.at(i).at(0) == arestas.at(j).at(0) &&
+                        arestas.at(i).at(1) == arestas.at(j).at(1)) || (arestas.at(i).at(0) == arestas.at(j).at(1) &&
+                                arestas.at(i).at(1) == arestas.at(j).at(0)))
                     i--;
             }
         } i
@@ -32,14 +36,14 @@ void GeraGrafo_Q1(int nmrArestas, int nmrVertices)
         cout<<"\n\t"<<i+1<<"-> [ ";
         for(j = 0; j < nmrArestas; j++)
         {
-            if(aresta[j][0] == i+1)
+            if(arestas.at(j).at(0) == i+1)
             {
-                cout<<aresta[j][1]<<" ";
+                cout<<arestas.at(j).at(1)<<" ";
                 contador++;
             }
-            else if(aresta[j][1] == i+1)
+            else if(arestas.at(j).at(1) == i+1)
             {
-                cout<<aresta[j][0]<<" ";
+                cout<<arestas.at(j).at(0)<<" ";
                 contador++;
             }
             else if(j== nmrArestas-1 && contador == 0)
