@@ -57,6 +57,21 @@ vector<vector<int>> GeraGrafo_Q1(int nmrArestas, int nmrVertices)
     return arestas;
 }
 
+int indiceRecursao_Q6(int linha, int coluna, int i, int j, int contador){
+    if(j > i) {
+        contador ++;
+    }
+    if(linha == i && coluna == j) {
+        return contador;
+    }
+    if(j == 100){
+        return indiceRecursao_Q6(linha, coluna, i + 1, 0, contador);
+    }
+    else {
+        return indiceRecursao_Q6(linha, coluna, i, j + 1, contador);
+    }
+}
+
 vector<vector<int>> Questao1()
 {
     srand((unsigned int)time(NULL));
@@ -196,7 +211,49 @@ void Questao5(vector<int> vetorCompactado)
     }
 
 }
-void Questao6() {}
+void Questao6()
+{
+    int linha, coluna, i, j;
+    int n = 100;
+    int contadorIteracao = 0;
+    bool chegou = false;
+
+    cout<<"\nPara o tratamento do vetor de indices da matriz triangular superior o indice j deve ser maior que o indice i.";
+    cout<<"\nInsira a linha i entre 1 e 100: ";
+    cin>>linha;
+    cout<<"\nInsira a coluna j entre 1 e 100: ";
+    cin>>coluna;
+
+    if(linha > coluna || linha < 1 || linha > 100 || coluna <1 || coluna > 100){
+        cout<<"Entrada invalida";
+        return;
+    }
+
+    int calculo = linha * n - n - ((linha*(linha-1))/2) + (coluna-linha);
+    cout<<"\nPosicao no vetor por CALCULO: "<< calculo;
+
+    for(i = 1; i<= 100 && !chegou; i ++)
+    {
+        for(j = 1; j<= 100 && !chegou; j ++)
+        {
+            if(j > i && !chegou)
+            {
+                contadorIteracao ++;
+            }
+            if(linha == i && coluna == j)
+            {
+                chegou = true;
+            }
+        }
+    }
+
+    cout<<"\nPosicao no vetor por ITERACAO: "<< contadorIteracao;
+
+    cout<<"\nPosicao no vetor por RECURSAO: "<< indiceRecursao_Q6(linha, coluna, 1,1,0);
+
+
+
+}
 void Questao7() {}
 void Questao8() {}
 
