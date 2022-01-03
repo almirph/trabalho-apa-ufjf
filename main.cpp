@@ -90,7 +90,7 @@ vector<vector<int>> Questao2(vector<vector<int>> arestas)
     return matriz;
 }
 
-void Questao3(vector<vector<int>> matriz)
+vector<int> Questao3(vector<vector<int>> matriz)
 {
     vector<int> vetor(4950);
     int i, j;
@@ -108,16 +108,94 @@ void Questao3(vector<vector<int>> matriz)
         }
     }
 
-    cout<<"\nVetor Binario: \n";
+    cout<<"\n\nVetor Binario: \n\n";
 
     for(i=0; i<4950; i++)
     {
         cout<<" "<< vetor[i] << " ";
     }
 
+    return vetor;
+
 }
-void Questao4() {}
-void Questao5() {}
+vector<int> Questao4(vector<int> vetorBinario)
+{
+    int i;
+    int contador = 0;
+    int vetorCompactadoSize = 0;
+
+    for(i=0; i<4950; i++)
+    {
+        vetorCompactadoSize =  vetorCompactadoSize + vetorBinario.at(i);
+    }
+
+    vector<int> vetorCompactado(vetorCompactadoSize);
+
+    for(i=0; i<4950; i++)
+    {
+        if(vetorBinario.at(i) == 1)
+        {
+            vetorCompactado.at(contador) = i + 1;
+            contador++;
+        }
+    }
+
+    cout<<"\n\nVetor Compactado: \n\n";
+
+    for(i = 0; i< vetorCompactadoSize; i++)
+    {
+        cout<<" "<< vetorCompactado.at(i) << " ";
+    }
+
+    return vetorCompactado;
+
+}
+
+void Questao5(vector<int> vetorCompactado)
+{
+    int i, j;
+    int contadorValVetorCompactado = 0;
+    int contadorPosVetorCompactado = 0;
+    vector<vector<int>> matriz(100, vector<int>(100, 0));
+
+    for(i = 0; i<100; i++)
+    {
+        for(j=0; j<100; j++)
+        {
+            if(i < j)
+            {
+                contadorValVetorCompactado ++;
+            }
+            if(contadorPosVetorCompactado > vetorCompactado.size() - 1)
+            {
+                break;
+            }
+            if(vetorCompactado.at(contadorPosVetorCompactado) == contadorValVetorCompactado)
+            {
+                matriz.at(i).at(j) = 1;
+                matriz.at(j).at(i) = 1;
+                contadorPosVetorCompactado ++;
+            }
+
+        }
+        if(contadorPosVetorCompactado > vetorCompactado.size())
+        {
+            break;
+        }
+    }
+
+    cout<<"\n\nNova Matriz: \n";
+
+    for(i = 0; i < 100; i++)
+    {
+        cout << " \n";
+        for(j = 0; j < 100; j++)
+        {
+            cout << " " << matriz.at(i).at(j) << " ";
+        }
+    }
+
+}
 void Questao6() {}
 void Questao7() {}
 void Questao8() {}
@@ -143,11 +221,11 @@ int main()
         break;
 
     case '4':
-        Questao4();
+        Questao4(Questao3(Questao2(Questao1())));
         break;
 
     case '5':
-        Questao5();
+        Questao5(Questao4(Questao3(Questao2(Questao1()))));
         break;
 
     case '6':
