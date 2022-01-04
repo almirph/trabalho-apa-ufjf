@@ -57,17 +57,22 @@ vector<vector<int>> GeraGrafo_Q1(int nmrArestas, int nmrVertices)
     return arestas;
 }
 
-int indiceRecursao_Q6(int linha, int coluna, int i, int j, int contador){
-    if(j > i) {
+int indiceRecursao_Q6(int linha, int coluna, int i, int j, int contador)
+{
+    if(j > i)
+    {
         contador ++;
     }
-    if(linha == i && coluna == j) {
+    if(linha == i && coluna == j)
+    {
         return contador;
     }
-    if(j == 100){
+    if(j == 100)
+    {
         return indiceRecursao_Q6(linha, coluna, i + 1, 0, contador);
     }
-    else {
+    else
+    {
         return indiceRecursao_Q6(linha, coluna, i, j + 1, contador);
     }
 }
@@ -224,7 +229,8 @@ void Questao6()
     cout<<"\nInsira a coluna j entre 1 e 100: ";
     cin>>coluna;
 
-    if(linha > coluna || linha < 1 || linha > 100 || coluna <1 || coluna > 100){
+    if(linha > coluna || linha < 1 || linha > 100 || coluna <1 || coluna > 100)
+    {
         cout<<"Entrada invalida";
         return;
     }
@@ -255,7 +261,106 @@ void Questao6()
 
 }
 void Questao7() {}
-void Questao8() {}
+void Questao8()
+{
+    int i, j, k;
+    int matrizSize = 10;
+    int vetSize = 45;
+    int vetCont = 0;
+    vector<vector<int>> matriz1(matrizSize, vector<int>(matrizSize, 0));
+    vector<vector<int>> matriz2(matrizSize, vector<int>(matrizSize, 0));
+    vector<vector<int>> matrizProduto(matrizSize, vector<int>(matrizSize, 0));
+    vector<int> vetorMat1(vetSize);
+    vector<int> vetorMat2(vetSize);
+    vector<int> vetorMatSoma(vetSize);
+
+
+    for(i=0; i<matrizSize; i++)
+    {
+        for(j=0; j<matrizSize; j++)
+        {
+            if(i < j)
+            {
+                matriz1.at(i).at(j) = rand() % 100;
+                matriz1.at(j).at(i) = matriz1.at(i).at(j);
+                matriz2.at(i).at(j) = rand() % 100;
+                matriz2.at(j).at(i) = matriz2.at(i).at(j);
+
+                vetorMat1.at(vetCont) = matriz1.at(i).at(j);
+                vetorMat2.at(vetCont) = matriz2.at(i).at(j);
+
+                vetCont ++;
+            }
+
+        }
+    }
+
+    cout<<"\nMatriz 1: \n";
+    for(i=0; i<matrizSize; i++)
+    {
+        for(j=0; j<matrizSize; j++)
+        {
+            cout<<" "<<matriz1.at(i).at(j)<<" ";
+        }
+        cout<<"\n";
+    }
+
+    cout<<"\nMatriz 2: \n";
+    for(i=0; i<matrizSize; i++)
+    {
+        for(j=0; j<matrizSize; j++)
+        {
+            cout<<" "<<matriz2.at(i).at(j)<<" ";
+        }
+        cout<<"\n";
+    }
+
+    cout<<"\nVetor da Matriz 1: \n";
+    for(i = 0; i< vetSize; i++)
+    {
+        cout<<" "<<vetorMat1.at(i)<<" ";
+    }
+
+    cout<<"\nVetor da Matriz 2: \n";
+    for(i = 0; i< vetSize; i++)
+    {
+        cout<<" "<<vetorMat2.at(i)<<" ";
+    }
+
+    for(i = 0; i< vetSize; i++)
+    {
+        vetorMatSoma.at(i) = vetorMat1.at(i) + vetorMat2.at(i);
+    }
+
+    cout<<"\nSoma da Matriz 1 + 2: \n";
+
+    for(i = 0; i< vetSize; i++)
+    {
+        cout<<" "<<vetorMatSoma.at(i)<<" ";
+    }
+
+    cout<<"\nProduto da Matriz 1 * 2: \n";
+
+    for(i = 0; i< matrizSize; i++)
+    {
+        for(j = 0; j<matrizSize; j++)
+        {
+            for(k = 0; k< 10; k++)
+            {
+                matrizProduto.at(i).at(j) = matrizProduto.at(i).at(j) + (matriz1.at(i).at(k) * matriz2.at(k).at(j));
+            }
+        }
+    }
+
+    for(i = 0; i< matrizSize; i++)
+    {
+        for(j = 0; j<matrizSize; j++)
+        {
+            cout<<" "<<matrizProduto.at(i).at(j)<<" ";
+        }
+        cout<<"\n";
+    }
+}
 
 int main()
 {
