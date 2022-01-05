@@ -15,19 +15,10 @@ vector<vector<int>> GeraGrafo_Q1(int nmrArestas, int nmrVertices)
         arestas.at(i).at(0) = rand()%nmrVertices+1;
         arestas.at(i).at(1) = rand()%nmrVertices+1;
 
-        if(arestas.at(i).at(0) == arestas.at(i).at(1))
-            continue;
-        else
+        if(arestas.at(i).at(0) != arestas.at(i).at(1))
         {
-            for(j = 0; j < i; j++)
-            {
-                if((arestas.at(i).at(0) == arestas.at(j).at(0) &&
-                        arestas.at(i).at(1) == arestas.at(j).at(1)) || (arestas.at(i).at(0) == arestas.at(j).at(1) &&
-                                arestas.at(i).at(1) == arestas.at(j).at(0)))
-                    i--;
-            }
-        } i
-        ++;
+            i++;
+        }
     }
 
     cout<<"\nGrafo aleatorio: \n";
