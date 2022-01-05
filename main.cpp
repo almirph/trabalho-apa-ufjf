@@ -260,7 +260,39 @@ void Questao6()
 
 
 }
-void Questao7() {}
+void Questao7(vector<int> vetorCompactado)
+{
+    int i, j;
+    int contador = 1;
+    int posicao = 0;
+    bool achou = false;
+
+    cout<<"\n\nDigite a posicao do vetor de 0 a "<<vetorCompactado.size() - 1<<" : ";
+    cin>>posicao;
+    if(!(posicao >= 0 && posicao < vetorCompactado.size())){
+        cout<<"\nPosicao invalida.";
+        return;
+    }
+
+    for(i=0; i<100; i++)
+    {
+        for(j=0; j<100 && !achou; j++)
+        {
+            if(i<j)
+            {
+                contador ++;
+            }
+            if(contador == vetorCompactado.at(posicao))
+            {
+                cout<<"\n\nLinha e coluna da matriz na posicao "<<posicao<<" :";
+                cout<<"\ni="<<i<<"\nj="<<j;
+                achou = true;
+            }
+
+        }
+    }
+
+}
 void Questao8()
 {
     int i, j, k;
@@ -395,8 +427,11 @@ int main()
         break;
 
     case '7':
-        Questao7();
+    {
+        Questao7(Questao4(Questao3(Questao2(Questao1()))));
         break;
+    }
+
 
     case '8':
         Questao8();
